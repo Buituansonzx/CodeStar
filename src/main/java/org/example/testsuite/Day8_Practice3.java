@@ -12,7 +12,7 @@ public class Day8_Practice3 extends CommonBase {
     }
     @Test
     public void getLocator(){
-        System.out.println(driver.findElements(By.id("userId")));
+        System.out.println(driver.findElement(By.id("userId")));
         System.out.println(driver.findElement(By.id("pass")));
         System.out.println(driver.findElement(By.name("company")));
         System.out.println(driver.findElement(By.name("mobile number")));

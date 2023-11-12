@@ -3,12 +3,9 @@ package org.example.testsuite;
 import org.example.common.CommonBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Pause;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import static org.openqa.selenium.devtools.v85.debugger.Debugger.pause;
 
 public class Day8_Practice2 extends CommonBase {
     @BeforeMethod
