@@ -1,0 +1,17 @@
+Bài 2:
+6, //button[@id="blue"]
+7, //div[@id="pancakes"][2]//button[2]
+8, //div[@id="unique"]//button[3]\
+9, //div[@id="unique"][2]//button
+10,//div[@id="unique"][2]//button[3]
+11, //div[@id="unique"][2]//button[last()]
+
+Bài 3:
+1, //table[@id="resultTable"]//tbody//tr[4]
+2, //tr[@class="plan rit"][2]
+3, //tr[@class="plan rit"][3]
+
+Bài 4:
+1, //img[@class="lnXdpd"]
+2, (//input[@value="Tìm trên Google"])[2]
+3, (//input[@class="RNmpXc"])[2]
