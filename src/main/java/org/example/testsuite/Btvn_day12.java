@@ -27,6 +27,7 @@ public class Btvn_day12 extends CommonBase {
         if(!radioYes.isSelected()){
             radioYes.click();
         }
+        System.out.println("Radio yes was selected!");
     }
 
 }
