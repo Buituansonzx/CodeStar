@@ -19,7 +19,7 @@ public class ClienTest extends CommonBase {
         Login_Factory login = new Login_Factory(driver);
         login.LoginFunction("admin@demo.com","riseDemo");
         Client_Page client = new Client_Page(driver);
-        client.AddClientFunction("demo Company","Sara Ann");
+        client.AddClientFunction("BTS Company","Sara Ann","Ha Noi","Ha Noi","Ha Tay","10001","Viet Nam","09123456789","facebook.com","12312","213123","VIP","CUC","abc","Inactive");
         Thread.sleep(3000);
         isElementPresent(By.xpath("//a[text()='Demo Company']"));
     }

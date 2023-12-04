@@ -36,11 +36,60 @@ public class Client_Page {
     @FindBy(xpath="//input[@type='search' and @placeholder='Search']")
     WebElement textboxSearch;
 
+    @FindBy(id = "address")
+    WebElement textAddress;
+
+    @FindBy(id = "city")
+    WebElement textCity;
+
+    @FindBy(id = "state")
+    WebElement textState;
+
+    @FindBy(id = "zip")
+    WebElement textZip;
+
+    @FindBy(id = "country")
+    WebElement textCountry;
+
+    @FindBy(id = "phone")
+    WebElement textPhone;
+
+    @FindBy(id = "website")
+    WebElement textWebsite;
+
+    @FindBy(id = "vat_number")
+    WebElement textVat;
+
+    @FindBy(id = "gst_number")
+    WebElement textGst;
+
+    @FindBy(id = "s2id_autogen2")
+    WebElement textGroup;
+
+
+    @FindBy(id = "select2-chosen-1")
+    WebElement dropdownListCurrent;
+
+    @FindBy(id = "s2id_autogen1_search")
+    WebElement currentSearch;
+
+    @FindBy(id = "currency_symbol")
+    WebElement textSymbol;
+
+    @FindBy(id = "s2id_autogen4")
+    WebElement textLabel;
+
+    @FindBy(id = "s2id_autogen4")
+    WebElement searchLabel;
+
+    @FindBy(id = "disable_online_payment")
+    WebElement checkOnlinePayment;
     public Client_Page(WebDriver _driver){
         this.driver = _driver;
         PageFactory.initElements(_driver, this);
     }
-    public void AddClientFunction(String companyName, String Owner) throws InterruptedException {
+    public void AddClientFunction(String companyName, String Owner, String address, String city, String state, String zip, String country, String phone, String website, String VAT, String GST, String group, String current, String symbol, String label) throws InterruptedException {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         clientLinks.click();
         clientButton.click();
         Thread.sleep(3000);
@@ -48,9 +97,29 @@ public class Client_Page {
         textboxClientName.sendKeys(companyName);
         ownerDropdownlist.click();
         ownerItem.click();
+        textAddress.sendKeys(address);
+        textAddress.sendKeys(Keys.TAB);
+        textCity.sendKeys(city);
+        textState.sendKeys(state);
+        textZip.sendKeys(zip);
+        textCountry.sendKeys(country);
+        textPhone.sendKeys(phone);
+        textWebsite.sendKeys(website);
+        textVat.sendKeys(VAT);
+        textGst.sendKeys(GST);
+        textGroup.sendKeys(group);
+        textGroup.sendKeys(Keys.TAB);
+        dropdownListCurrent.click();
+        currentSearch.sendKeys(current);
+        currentSearch.sendKeys(Keys.TAB);
+        textSymbol.sendKeys(symbol);
+        textLabel.click();
+        searchLabel.sendKeys(label);
+        searchLabel.sendKeys(Keys.TAB);
+        checkOnlinePayment.click();
         buttonSave.click();
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+
         js.executeScript("arguments[0].click();", clientsTab);
         Thread.sleep(3000);
         textboxSearch.sendKeys(companyName);
