@@ -38,10 +38,14 @@ public class TrizenPage {
     @FindBy(xpath = "(//a[text()=\"Search Now\"])[1]")
     WebElement buttonSearch;
 
+    @FindBy(id = "one-way-tab")
+    WebElement radio;
+
     public void HandDateTimeDropdownList(String from, String to, String departingDate) throws InterruptedException {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", radio);
         textFlyFrom.sendKeys(from);
         textFlyTo.sendKeys(to);
-        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].removeAttribute('readonly', 'readonly')", textDepartingDate);
         textDepartingDate.clear();
         textDepartingDate.sendKeys(departingDate);
