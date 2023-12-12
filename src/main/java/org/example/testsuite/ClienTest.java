@@ -9,6 +9,8 @@ import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+
 public class ClienTest extends CommonBase {
     @BeforeMethod
     public void openChrome(){
@@ -21,6 +23,8 @@ public class ClienTest extends CommonBase {
         Client_Page client = new Client_Page(driver);
         client.AddClientFunction("BTS Company","Sara Ann","Ha Noi","Ha Noi","Ha Tay","10001","Viet Nam","09123456789","facebook.com","12312","213123","VIP","CUC","abc","Inactive");
         Thread.sleep(3000);
+        //Cách wait khác Implicit Wait
+        driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
         isElementPresent(By.xpath("//a[text()='Demo Company']"));
     }
 }
