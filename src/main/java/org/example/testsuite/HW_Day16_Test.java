@@ -3,6 +3,7 @@ package org.example.testsuite;
 import org.example.common.CommonBase;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -18,5 +19,9 @@ public class HW_Day16_Test extends CommonBase {
         String msg = driver.switchTo().alert().getText();
         Assert.assertEquals(msg, "Welcome to Selenium WebDriver Tutorials");
         driver.switchTo().alert().accept();
+    }
+    @AfterMethod
+    public void close(){
+        driver.quit();
     }
 }
