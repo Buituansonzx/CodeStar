@@ -3,12 +3,16 @@ package org.example.testsuite;
 import org.example.common.CommonBase;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class Hw_Day17_Bai1 extends CommonBase {
+    @Parameters("browser")
     @BeforeMethod
-    public void openChrome(){
-        driver = initChromeDriver("https://dienmaynhapkhaugiare.com.vn/");
+    public void openChrome( String browser){
+        setupDriver(browser);
+        driver.get("https://mediamart.vn/");
     }
     @Test
     public void test_IframeMap(){

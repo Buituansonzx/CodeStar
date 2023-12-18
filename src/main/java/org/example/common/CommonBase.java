@@ -6,6 +6,10 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -121,4 +125,57 @@ public class CommonBase {
             driver.close();
         }
     }
+    private WebDriver initChromeDriver() {
+        System.out.println("Launching system on Chrome driver..");
+        ChromeOptions options = new ChromeOptions();
+        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\driver\\chromedriver.exe");
+        // For MAC: System.getProperty("user.dir") + "/driver/chromedriver");
+        driver = new ChromeDriver(options);
+        driver.manage().window().maximize();
+        driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
+        return driver;
+    }
+
+    private WebDriver initFirefoxDriver() {
+        System.out.println("Launching system on Firefox driver..");
+        FirefoxOptions options = new FirefoxOptions();
+        System.setProperty("webdriver.firefox.driver", System.getProperty("user.dir") + "\\driver\\geckodriver.exe");
+        // For MAC: System.getProperty("user.dir") + "/driver/geckodriver");
+        driver = new FirefoxDriver(options);
+        driver.manage().window().maximize();
+        driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
+        return driver;
+    }
+
+    private WebDriver initMSEdgeDriver() {
+        System.out.println("Launching system on MS Edege driver..");
+        EdgeOptions options = new EdgeOptions();
+        System.setProperty("webdriver.edge.driver", System.getProperty("user.dir") + "\\driver\\msedgedriver.exe");
+        // For MAC: System.getProperty("user.dir") + "/driver/msedgedriver");
+        driver = new EdgeDriver(options);
+        driver.manage().window().maximize();
+        driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
+        return driver;
+    }
+
+    public void setupDriver(String browserName)
+    {
+        switch(browserName.trim().toLowerCase())
+        {
+            case "chrome":
+                driver = initChromeDriver();
+                break;
+            case "firefox":
+                driver = initFirefoxDriver();
+                break;
+            case "edge":
+                driver = initMSEdgeDriver();
+                break;
+            default:
+                System.out.println("No browser name was passed in prametter");
+                driver = initChromeDriver();
+        }
+    }
+
+
 }
