@@ -24,7 +24,7 @@ public class CommonBase {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.get(URL);
-        driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
+        WebDriver.Timeouts timeouts = driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
         return driver;
     }
 
@@ -68,6 +68,10 @@ public class CommonBase {
     {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", locator);
+    }
+    public void submitJs(By locator){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("document.forms[0].submit();",locator);
     }
 
     /* Handle SenKeys

@@ -2,6 +2,7 @@ package org.example.testsuite;
 
 import org.example.common.CommonBase;
 import org.openqa.selenium.By;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -44,5 +45,9 @@ public class Hw_Day18_Bai1 extends CommonBase {
         //Switching to Parent window (Main window)
         driver.switchTo().window(mainWindow);
         System.out.println("Đã chuyển về Window chính: " + driver.getCurrentUrl());
+    }
+    @AfterMethod
+    public void close(){
+        driver.close();
     }
 }

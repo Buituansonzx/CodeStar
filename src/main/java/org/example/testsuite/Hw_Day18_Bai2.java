@@ -12,31 +12,30 @@ import java.util.concurrent.TimeUnit;
 public class Hw_Day18_Bai2 extends CommonBase {
     @Parameters("browser")
     @BeforeMethod
-    public void openBrowser(String browser) {
+    public void openBrowser( String browser) {
         setupDriver(browser);
         driver.get("https://bepantoan.vn/");
     }
     @Test
     public void test_BepAnToan(){
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        driver.findElement(By.xpath("//a[@class=\"flex items-center space-x-0 transition duration-150 ease-in-out bg-gradient-access rounded-full text-white hover:scale-105 h-[40px]\"]")).click();
-        String mainWindow = driver.getWindowHandle();
-        //Lấy ra tất cả các tab Windows đang open bằng hàm getWindowHandle
-        Set<String> windows = driver.getWindowHandles();
-        //Set là 1 collection để lưu các phần tử giá trị ko trùng lặp
-        //Dùng for each để duyệt phần từ không trùng lặp
-        for (String window : windows) {
-            System.out.println(window);
-                //So sánh nếu window nào khác window Chính thì chuyển qua để thao tác
-                pause(2000);
-                System.out.println("Đã chuyển đến lớp Window con");
-                //Một số hàm hỗ trợ
-                System.out.println("Title: " + driver.switchTo().window(window).getTitle());
-                System.out.println("CurrentTitle: " + driver.switchTo().window(window).getCurrentUrl());
-                //Lấy text sau khi Submit
-                System.out.println(driver.findElement(By.xpath("//h1")).getText());
-                driver.close();
-
+        pause(5000);
+        int totalIframe = driver.findElements(By.tagName("iframe")).size();
+        for(int i=0; i<totalIframe;i++){
+            driver.switchTo().frame(i);
+            int totalChatNgayVoiChungToi = driver.findElements(By.xpath("//button[@class=\"tawk-custom-color tawk-custom-border-color tawk-button\"]")).size();
+            System.out.println("totalChatNgayVoiChungToi: "+ totalChatNgayVoiChungToi);
+            if(totalChatNgayVoiChungToi != 0){
+                click(By.xpath("//button[@class=\"tawk-custom-color tawk-custom-border-color tawk-button\"]"));
+                pause(5000);
+                submitJs(By.xpath("//button[@class=\"tawk-margin-xsmall-left tawk-button-hover tawk-custom-color tawk-custom-border-color tawk-button\"]"));
+                pause(5000);
+                isElementPresent(By.xpath("//b[text()=\"CHÁT ONLINE NHẬN QUÀ KHUYẾN MÃI TRỊ GIÁ \"]"));
+                //Đóng iframe trước khi chuyển sang iframe kế tiếp
+                driver.switchTo().defaultContent();
+            }else {
+                //Không thực thi lệnh, đóng iframe trước khi chuyển sang iframe kế tiếp
+                driver.switchTo().defaultContent();
+            }
         }
     }
 }

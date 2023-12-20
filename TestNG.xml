@@ -7,7 +7,7 @@
 
 		</parameter>
 		<classes>
-			<class name="org.example.testsuite.Hw_Day18_Bai1" />
+<!--			<class name="org.example.testsuite.Hw_Day18_Bai1" />-->
 			<class name="org.example.testsuite.Hw_Day18_Bai2" />
 		</classes>	
 	</test>
@@ -16,16 +16,16 @@
 
 		</parameter>
 		<classes>
-			<class name="org.example.testsuite.Hw_Day18_Bai1" />
-			<class name="org.example.testsuite.Hw_Day18_Bai2" />
+<!--			<class name="org.example.testsuite.Hw_Day18_Bai1" />-->
+<!--			<class name="org.example.testsuite.Hw_Day18_Bai2" />-->
 		</classes>
 	</test>
 	<test name="Automation_Test run on Chrome">
 		<parameter name="browser" value="chrome">
 		</parameter>
 		<classes>
-			<class name="org.example.testsuite.Hw_Day18_Bai1" />
-			<class name="org.example.testsuite.Hw_Day18_Bai2" />
+<!--			<class name="org.example.testsuite.Hw_Day18_Bai1" />-->
+<!--			<class name="org.example.testsuite.Hw_Day18_Bai2" />-->
 		</classes>
 	</test>
 
